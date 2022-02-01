@@ -1,9 +1,9 @@
 import React from 'react';
 
 interface Props {
-    title: String;
+    title: string;
     type: 'submit' | 'button';
-    className?: String;
+    className?: string;
     children?: JSX.Element;
 }
 
