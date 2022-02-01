@@ -3,3 +3,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.fade {
+    &-enter {
+        opacity: 0;
+        &-active{
+            opacity: 1;
+            transition: opacity 0.3s ease-out;
+        }
+    }
+    &-exit {
+        opacity: 1;
+        &-active {
+            opacity: 0;
+            transition: opacity 0.3s ease-in;
+          }
+      }
+  }
+
+  
