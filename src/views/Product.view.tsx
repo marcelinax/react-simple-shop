@@ -2,16 +2,19 @@ import React, { useEffect, useState } from 'react';
 
 import { BiCartAlt } from 'react-icons/bi';
 import { DefaultLayout } from '../layouts/Default.layout';
-import { ICategory } from './../models/ICategory';
 import { PrimaryButton } from '../components/buttons/PrimaryButton';
 import { Spinner } from '../components/global/Spinner';
+import { addProductToShoppingCart } from '../store/shoppingCartSlice';
 import { locales } from './../Locales';
+import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import useProduct from '../hooks/useProduct';
 
 export const ProductView: React.FC = () => {
 
     const { slug } = useParams();
+    const dispatch = useDispatch();
     const { loading, product } = useProduct(slug || '');
 
     const renderCategories = (): JSX.Element | JSX.Element[] => {
@@ -20,6 +23,11 @@ export const ProductView: React.FC = () => {
                 <p className='text-white text-sm'>{category.name}</p>
             </div>
         ));
+    };
+
+    const onAddProductToCart = async (): Promise<void> => {
+        await dispatch(addProductToShoppingCart(product));
+        toast.success(locales.product_added_to_the_cart);
     };
 
     const renderProduct = (): JSX.Element => {
@@ -37,7 +45,7 @@ export const ProductView: React.FC = () => {
                         <p>{product.description}</p>
                     </div>
                     <div className='mt-8'>
-                        <PrimaryButton title={locales.add_to_cart} type='button' className='py-5 px-8'>
+                        <PrimaryButton onClick={onAddProductToCart} title={locales.add_to_cart} type='button' className='py-5 px-8'>
                             {<BiCartAlt size={22} className='mr-3' />}
                         </PrimaryButton>
                     </div>

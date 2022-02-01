@@ -2,26 +2,38 @@ import {BiMinus, BiPlus, BiX} from 'react-icons/bi';
 
 import React from 'react';
 
-export const ShoppingCartItem: React.FC = () => {
+interface Props {
+    image: string;
+    name: string;
+    price: string;
+    amount: number;
+    onIncreaseProductAmount: () => void;
+    onDecreaseProductAmount: () => void;
+    onDeleteProduct: () => void;
+}
+
+export const ShoppingCartItem: React.FC<Props> = ({ amount, image, name, price, onIncreaseProductAmount, onDecreaseProductAmount, onDeleteProduct }) => {
+
+    
     return (
         <div className='w-full border-b-2 border-gray-300/70 h-52 py-8 first:border-t-2 '>
             <div className='w-full flex h-full items-center'>
-                <div style={{ backgroundImage: 'url(https://i.picsum.photos/id/672/640/480.jpg?hmac=Qh6HFl-tBzGwlPPjrHmcNfk7DJCnPEwD7ErC7fFxiM0)' }} className='flex-1 shadow-lg rounded-md cursor-pointer bg-no-repeat bg-center bg-cover h-full'/>
+                <div style={{ backgroundImage: `url(${image})` }} className='flex-1 shadow-lg rounded-md cursor-pointer bg-no-repeat bg-center bg-cover h-full'/>
                 <div className='flex-1 ml-4'>
-                    <h6 className='text-sm font-semibold'>Incredible Frozen Salad</h6>
+                    <h6 className='text-sm font-semibold'>{name}</h6>
                 </div>
                 <div className='flex-1'>
                     <div className='bg-light-gray-200 w-fit flex items-center rounded-xl p-1'>
-                        <BiMinus className='cursor-pointer'/>
-                        <span className='mx-4 select-none'>1</span>
-                        <BiPlus className='cursor-pointer'/>
+                        <BiMinus className='cursor-pointer' onClick={onDecreaseProductAmount}/>
+                        <span className='mx-4 select-none'>{amount}</span>
+                        <BiPlus className='cursor-pointer' onClick={onIncreaseProductAmount}/>
                     </div>
                 </div>
                 <div className='flex-1'>
-                    <p className='font-semibold'>$120</p>
+                    <p className='font-semibold'>${price}</p>
                 </div>
                 <div>
-                    <div className='bg-light-gray-200 w-fit p-1 rounded-half cursor-pointer'>
+                    <div className='bg-light-gray-200 w-fit p-1 rounded-half cursor-pointer' onClick={onDeleteProduct}>
                         <BiX size={20}/>
                     </div>
                 </div>

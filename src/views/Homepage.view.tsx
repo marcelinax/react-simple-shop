@@ -1,5 +1,4 @@
 import { DefaultLayout } from '../layouts/Default.layout';
-import { ICategory } from './../models/ICategory';
 import { ProductItem } from '../components/products/ProductItem';
 import React from 'react';
 import { Spinner } from '../components/global/Spinner';
@@ -14,7 +13,7 @@ export const HomepageView: React.FC = () => {
 
     const renderProducts = (): JSX.Element | JSX.Element[] => {
         return products && products.map(product => (
-            <ProductItem key={product.id} categories={product.categories} image={product.image} name={product.name} price={product.price} slug={product.slug}/>
+            <ProductItem key={product.id} description={product.description} id={product.id} categories={product.categories} image={product.image} name={product.name} price={product.price} slug={product.slug}/>
         ));
     };
 

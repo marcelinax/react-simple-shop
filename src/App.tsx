@@ -1,12 +1,16 @@
-import React, { useEffect } from 'react';
+import 'react-toastify/dist/ReactToastify.css';
 
+import React from 'react';
 import Router from './routes';
-import { useLocation } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
 
     return (
-        <Router/>
+        <>
+            <Router/>
+            <ToastContainer position='top-center'/>
+        </>
     );
 }
 

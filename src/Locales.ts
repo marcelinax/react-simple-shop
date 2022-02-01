@@ -7,5 +7,6 @@ export const locales = {
     shipping: 'Shipping',
     total: 'Total',
     checkout: 'CHECKOUT',
-    free: 'FREE'
+    free: 'FREE',
+    product_added_to_the_cart: 'Product added to the cart!'
 };

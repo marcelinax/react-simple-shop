@@ -1,19 +1,34 @@
+import { decreaseProductAmountInShoppingCart, deleteProductFromShoppingCart, increaseProductAmountInShoppingCart } from '../store/shoppingCartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { DefaultLayout } from '../layouts/Default.layout';
 import { PrimaryButton } from '../components/buttons/PrimaryButton';
 import React from 'react';
+import { RootState } from '../store/store';
 import { ShoppingCartItem } from '../components/shoppingCart/ShoppingCartItem';
+import { getCalculatedSumPrice } from './../utils/getCalculatedSumPrice';
 import { locales } from './../Locales';
 
 export const ShoppingCartView: React.FC = () => {
+
+    const shoppingCartItems = useSelector((state: RootState) => state.shoppingCart.shoppingCartItems);
+    const dispatch = useDispatch();
+
+    const renderShoppingCartItems = (): JSX.Element | JSX.Element[] => {
+        return shoppingCartItems && shoppingCartItems.map(item => (
+            <ShoppingCartItem onDeleteProduct={()=> {dispatch(deleteProductFromShoppingCart(item.product));}} onDecreaseProductAmount={() => { dispatch(decreaseProductAmountInShoppingCart(item.product)); }} onIncreaseProductAmount={() => { dispatch(increaseProductAmountInShoppingCart(item.product)); }}
+                key={item.product.id} amount={item.amount} image={item.product.image} name={item.product.name} price={item.product.price} />
+        ));
+    };
+
+
     return (
         <DefaultLayout>
             <div className='w-full flex flex-col'>
                 <h1 className='text-3xl font-medium text-center my-16'>{locales.your_cart}</h1>
                 <div className='w-full flex px-16'>
                     <div className='flex basis-3/4 mr-8 flex-col'>
-                        <ShoppingCartItem/>
-                        <ShoppingCartItem/>
-                        <ShoppingCartItem/>
+                        {renderShoppingCartItems()}
                     </div>
                     <div className='flex basis-1/4 flex-col'>
                         <div className='bg-light-gray-100 shadow-lg rounded-md w-full'>
@@ -23,7 +38,7 @@ export const ShoppingCartView: React.FC = () => {
                             <div className='w-full p-8'>
                                 <div className='w-full flex justify-between items-center'>
                                     <p className='text-zinc-500 font-medium text-sm'>{locales.subtotal}</p>
-                                    <p className='font-medium text-sm'>$418</p>
+                                    <p className='font-medium text-sm'>${getCalculatedSumPrice(shoppingCartItems)}</p>
                                 </div>
                                 <div className='w-full flex justify-between items-center mb-3'>
                                     <p className='text-zinc-500 font-medium text-sm'>{locales.shipping}</p>
@@ -33,11 +48,11 @@ export const ShoppingCartView: React.FC = () => {
                             <div className='w-full bg-light-gray-200 px-8 py-5'>
                                 <div className='w-full flex justify-between items-center'>
                                     <p className='text-lg font-medium'>{locales.total}</p>
-                                    <p className='text-lg font-medium'>$418</p>
+                                    <p className='text-lg font-medium'>${getCalculatedSumPrice(shoppingCartItems)}</p>
                                 </div>
                             </div>
                         </div>
-                        <PrimaryButton title={locales.checkout} type='button' className='mt-4 py-4'/>
+                        <PrimaryButton onClick={()=>{}} title={locales.checkout} type='button' className='mt-4 py-4'/>
                     </div>
                 </div>
             </div>
