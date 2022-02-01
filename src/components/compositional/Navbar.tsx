@@ -23,7 +23,7 @@ export const Navbar: React.FC = () => {
 
     return (
         <div className='w-full shadow-lg'>
-            <div className='container mx-auto py-8 flex justify-between items-center'>
+            <div className='container px-3 md:px-0 mx-auto py-8 flex justify-between items-center'>
                 <Link to='/' className='text-2xl font-semibold'>
                     {locales.shopvibe}
                 </Link>

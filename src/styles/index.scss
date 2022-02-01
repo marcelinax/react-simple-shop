@@ -39,3 +39,20 @@
     animation: spin 2s linear infinite;
 }
   
+.scrollbar{
+    
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+      &::-webkit-scrollbar-track {
+        background:  #e4e4e7;
+        border-radius: 20px;
+    }
+    
+      &::-webkit-scrollbar-thumb {
+        background:#a8a29e;
+        border-radius: 20px;
+    }
+}
+    

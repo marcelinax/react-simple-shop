@@ -41,7 +41,7 @@ export const ProductItem: React.FC<Props> = ({ name, image, price, categories, s
     };
 
     return (
-        <div className='flex basis-1/4 h-96 flex-col p-4'>
+        <div className='flex w-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4 h-96 flex-col p-4'>
             <div onClick={navigateToProduct} style={{ backgroundImage: `url(${image})` }} className='shadow-lg rounded-md cursor-pointer bg-no-repeat bg-center bg-cover w-full h-2/3 hover:opacity-90 transition-all relative'>
                 <div className='absolute flex flex-col left-0 bottom-5 py-1 px-6 bg-primary rounded-tr-md rounded-br-md opacity-90'>
                     {renderCategories()}

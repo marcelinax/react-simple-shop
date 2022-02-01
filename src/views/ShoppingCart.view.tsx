@@ -26,11 +26,11 @@ export const ShoppingCartView: React.FC = () => {
         <DefaultLayout>
             <div className='w-full flex flex-col'>
                 <h1 className='text-3xl font-medium text-center my-16'>{locales.your_cart}</h1>
-                <div className='w-full flex px-16'>
-                    <div className='flex basis-3/4 mr-8 flex-col'>
+                <div className='w-full flex flex-col lg:flex-row md:px-16'>
+                    <div className='flex w-full lg:basis-3/4 lg:mr-8 flex-col lg:overflow-auto lg:h-[70vh] lg:pr-10 scrollbar'>
                         {renderShoppingCartItems()}
                     </div>
-                    <div className='flex basis-1/4 flex-col'>
+                    <div className='flex w-full lg:basis-1/4 flex-col px-3 lg:px-0 mb-10 lg:mb-0'>
                         <div className='bg-light-gray-100 shadow-lg rounded-md w-full'>
                             <div className='w-full px-8 py-5 border-b-[1.5px] border-gray-300/70'>
                                 <h6 className='text-lg font-medium'>{locales.order_summary}</h6>
