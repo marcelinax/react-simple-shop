@@ -4,9 +4,16 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import { HomepageView } from '../views/Homepage.view';
 import { ProductView } from '../views/Product.view';
 import { ShoppingCartView } from '../views/ShoppingCart.view';
+import { useEffect } from 'react';
 
 const RouterRoutes: React.FC = () => {
     const location = useLocation();
+
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
 
     return (
         <TransitionGroup>

@@ -3,7 +3,7 @@ import React from 'react';
 
 export const Spinner: React.FC = () => {
     return (
-        <div className='w-full flex items-center justify-center h-full'>
+        <div className='w-full h-full flex items-center justify-center'>
             <BiLoader size={40} className='spinner'/>
         </div>
        

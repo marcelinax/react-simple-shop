@@ -7,7 +7,7 @@ import { locales } from './../Locales';
 export const ShoppingCartView: React.FC = () => {
     return (
         <DefaultLayout>
-            <div className='w-screen flex flex-col'>
+            <div className='w-full flex flex-col'>
                 <h1 className='text-3xl font-medium text-center my-16'>{locales.your_cart}</h1>
                 <div className='w-full flex px-16'>
                     <div className='flex basis-3/4 mr-8 flex-col'>

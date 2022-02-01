@@ -6,8 +6,10 @@ interface Props {
 }
 
 export const DefaultLayout: React.FC<Props> = ({children}) => {
-    return <div >
-        <Navbar />
-        {children}
-    </div>;
+    return (
+        <div className='h-screen max-w-screen flex flex-col'>
+            <Navbar />
+            {children}
+        </div>
+    );
 };

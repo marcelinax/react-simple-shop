@@ -13,11 +13,9 @@ export const HomepageView: React.FC = () => {
 
 
     const renderProducts = (): JSX.Element | JSX.Element[] => {
-        
         return products && products.map(product => (
             <ProductItem key={product.id} categories={product.categories} image={product.image} name={product.name} price={product.price} slug={product.slug}/>
         ));
-        
     };
 
     return (

@@ -3,6 +3,7 @@ import { ICategory } from './../../models/ICategory';
 import { PrimaryButton } from '../buttons/PrimaryButton';
 import React from 'react';
 import { locales } from './../../Locales';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
     name: string;
@@ -13,6 +14,8 @@ interface Props {
 }
 
 export const ProductItem: React.FC<Props> = ({ name, image, price, categories, slug }) => {
+
+    const navigate = useNavigate();
     
     const renderCategories = (): JSX.Element | JSX.Element[] => {
         return categories && categories.map(category => (
@@ -21,9 +24,13 @@ export const ProductItem: React.FC<Props> = ({ name, image, price, categories, s
         
     };
 
+    const navigateToProduct = () => {
+        navigate('/product/' + slug);
+    };
+
     return (
         <div className='flex basis-1/4 h-96 flex-col p-4'>
-            <div style={{ backgroundImage: `url(${image})` }} className='shadow-lg rounded-md cursor-pointer bg-no-repeat bg-center bg-cover w-full h-2/3 hover:opacity-90 transition-all relative'>
+            <div onClick={navigateToProduct} style={{ backgroundImage: `url(${image})` }} className='shadow-lg rounded-md cursor-pointer bg-no-repeat bg-center bg-cover w-full h-2/3 hover:opacity-90 transition-all relative'>
                 <div className='absolute flex flex-col left-0 bottom-5 py-1 px-6 bg-primary rounded-tr-md rounded-br-md opacity-90'>
                     {renderCategories()}
                 </div>
