@@ -11,9 +11,9 @@ export const Navbar:React.FC = () => {
                     {locales.shopvibe}
                 </Link>
                 <div className='flex relative items-end cursor-pointer'>
-                    <span className='absolute -top-2 right-7 bg-primary text-white px-1 text-xs rounded-sm z-10'>3</span>
+                    <span className='absolute -top-2 right-7 bg-secondary text-white px-1 text-xs rounded-sm z-10'>3</span>
                     <BiShoppingBag size={22} className='mr-1'/>
-                    <span className='text-xs font-bold text-primary'>$423</span>
+                    <span className='text-xs font-bold text-secondary'>$423</span>
                 </div>
             </div>
         </div>
