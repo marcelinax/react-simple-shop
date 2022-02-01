@@ -6,10 +6,15 @@ module.exports = {
         extend: {
             colors: {
                 primary: '#292524',
-                error: '#e11d48'
+                error: '#e11d48',
+                'light-gray-100': '#EFEFEF',
+                'light-gray-200': '#E8E8E8'
             },
             fontFamily: {
                 'sans': ['Poppins']
+            },
+            borderRadius: {
+                'half': '50%'
             }
         },
     },
