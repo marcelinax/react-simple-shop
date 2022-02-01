@@ -5,7 +5,11 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                primary: '#f97316'
+                primary: '#292524',
+                error: '#e11d48'
+            },
+            fontFamily: {
+                'sans': ['Poppins']
             }
         },
     },
